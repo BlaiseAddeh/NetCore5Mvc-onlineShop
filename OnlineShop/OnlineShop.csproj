@@ -18,6 +18,8 @@
 	  <None Remove="Utility\" />
 	  <None Remove="Areas\Customer\Views\Order\" />
 	  <None Remove="Areas\Customer\Views\User\" />
+	  <None Remove="Areas\Admin\Views\Role\" />
+	  <None Remove="Areas\Admin\Models\" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -52,6 +54,8 @@
 	  <Folder Include="Utility\" />
 	  <Folder Include="Areas\Customer\Views\Order\" />
 	  <Folder Include="Areas\Customer\Views\User\" />
+	  <Folder Include="Areas\Admin\Views\Role\" />
+	  <Folder Include="Areas\Admin\Models\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Remove="wwwroot\images\" />

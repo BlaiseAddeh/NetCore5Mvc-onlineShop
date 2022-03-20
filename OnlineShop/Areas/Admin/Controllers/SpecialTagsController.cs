@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Data;
 using OnlineShop.Models;
@@ -10,6 +11,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Super user")]
     [Area("Admin")]
     public class SpecialTagsController : Controller
     {

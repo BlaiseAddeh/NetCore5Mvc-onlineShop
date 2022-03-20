@@ -13,6 +13,7 @@ using X.PagedList;
 
 namespace OnlineShop.Areas.Customer.Controllers
 {
+
     [Area("Customer")]
     public class HomeController : Controller
     {

@@ -34,8 +34,16 @@ namespace OnlineShop
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            /*
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddControllersWithViews();
+            */
+
+            // Pour la gestion des role, on met en commentaire la ligne ci dessus et la nouvelle ligne devient
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+               .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
 
 
@@ -44,12 +52,26 @@ namespace OnlineShop
                 options.IdleTimeout = TimeSpan.FromMinutes(30);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
+
             });
 
 
             services.AddMvc().AddControllersAsServices()
                    .AddRazorRuntimeCompilation()
                    .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

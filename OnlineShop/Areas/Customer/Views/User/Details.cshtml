@@ -1,38 +1,30 @@
 ﻿@model OnlineShop.Models.ApplicationUser
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Details";
 }
 
 <br />
 <h2 class="text-info">
-    Add New User
+    User Détails
 </h2>
 
-<form asp-action="Create" id="user-form" method="post" enctype="multipart/form-data">
+<form asp-action="" id="user-form" method="post" enctype="multipart/form-data">
     <div class="p-4 rounded border">
         <div asp-validation-summary="ModelOnly" class="text-danger">
 
         </div>
         <h3 class="">@ViewBag.message</h3>
+
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
+
         <div class="form-group row">
             <div class="col-2">
                 <label asp-for="UserName"></label>
             </div>
             <div class="col-5">
-                <input asp-for="UserName" class="form-control" />
+                <input asp-for="UserName" class="form-control" readonly="readonly" />
             </div>
-            <span asp-validation-for="UserName" class="text-danger"></span>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-2">
-                <label asp-for="PasswordHash"></label>
-            </div>
-            <div class="col-5">
-                <input asp-for="PasswordHash" class="form-control" type="password" />
-            </div>
-            <span asp-validation-for="PasswordHash" class="text-danger"></span>
         </div>
 
         <div class="form-group row">
@@ -40,7 +32,7 @@
                 <label asp-for="FirstName"></label>
             </div>
             <div class="col-5">
-                <input asp-for="FirstName" class="form-control" />
+                <input asp-for="FirstName" class="form-control" readonly="readonly" />
             </div>
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
@@ -50,14 +42,15 @@
                 <label asp-for="LastName"></label>
             </div>
             <div class="col-5">
-                <input asp-for="LastName" class="form-control" />
+                <input asp-for="LastName" class="form-control" readonly="readonly" />
             </div>
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
 
 
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Save" />
+            @*<input type="submit" class="btn btn-primary" value="Update" />*@
+            <a asp-action="Create" class="btn btn-primary">Create</a>
             <a asp-action="Index" class="btn btn-success">Back to list</a>
         </div>
 

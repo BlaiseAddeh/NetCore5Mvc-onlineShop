@@ -1,4 +1,23 @@
-﻿> dotnet ef migrations add InitialCreate --context ApplicationDbContext
+﻿++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+…or create a new repository on the command line
+echo "# NetCore5Mvc-onlineShop" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/BlaiseAddeh/NetCore5Mvc-onlineShop.git
+git push -u origin main
+
+…or push an existing repository from the command line
+
+git remote add origin https://github.com/BlaiseAddeh/NetCore5Mvc-onlineShop.git
+git branch -M main
+git push -u origin main
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+> dotnet ef migrations add InitialCreate --context ApplicationDbContext
 > dotnet ef database update
 
 ** Install de Alertify.js
@@ -18,13 +37,54 @@ installer le nuget suivant:
 
 dotnet add package X.PagedList.Mvc.Core
 
+
+
 **** installation de easy-form-validation-with-jquery
 Aller à l'url
 https://code.tutsplus.com/tutorials/sy-form-validation-with-jquery--cms-33096
 
 - Ajouter un id a la balise form du formulaire Create dans le répertoire User
+id="user-form"
 
+-- Le script à adapter: --
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#user-form").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 3
+                },
+                age: {
+                    required: true,
+                    number: true,
+                    min: 18
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                weight: {
+                    required: {
+                        depends: function (elem) {
+                            return $("#age").val() > 50
+                        }
+                    },
+                    number: true,
+                    min: 0
+                }
+            }
+        });
+    })
+</script>
+
+-- Au niveau de la Layout
+<style>
+   .error {
+       color: red
+   }
+</style>
 
 
 Adding Identity through the Command Line
